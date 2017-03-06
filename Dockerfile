@@ -43,7 +43,7 @@ RUN cd openbr && \
 # Download Boost
 RUN cd && \
     wget https://sourceforge.net/projects/boost/files/boost/1.63.0/boost_1_63_0.tar.gz/download  && \
-    tar -xvf boost_1_63_0.tar.gz \
+    tar -xvf boost_1_63_0.tar.gz && \
     rm -rf boost_1_63_0.tar.gz
 
 # Clean up
