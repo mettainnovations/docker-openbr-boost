@@ -5,7 +5,7 @@ FROM ubuntu:latest
 
 # Install dependencies
 RUN apt-get update -y && \
-    apt-get install -y build-essential cmake cmake-curses-gui wget unzip git qt5-default libqt5svg5-dev qtcreator && \
+    apt-get install -y build-essential cmake cmake-curses-gui wget unzip git libboost-all-dev qt5-default libqt5svg5-dev qtcreator && \
     apt-get clean -y
 
 RUN mkdir -p /home/developer
@@ -39,12 +39,6 @@ RUN cd openbr && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make -j4 && \
     make install
-
-# Download Boost
-RUN cd && \
-    wget https://downloads.sourceforge.net/project/boost/boost/1.63.0/boost_1_63_0.tar.gz?r=&ts=1488888306&use_mirror=ufpr && \
-    tar -xvf boost_1_63_0.tar.gz && \
-    rm -rf boost_1_63_0.tar.gz
 
 # Clean up
 RUN apt-get remove --purge -y wget unzip
